@@ -11,6 +11,8 @@ import (
 	"github.com/xyproto/ollamaclient"
 )
 
+const versionString = "translate 1.0.0"
+
 func main() {
 
 	stdinText := "hello"
@@ -32,6 +34,11 @@ func main() {
 	prompt := "Translate the following text to the locale " + locale + " (and only output the translated text): " + stdinText
 
 	oc := ollamaclient.NewWithModel("mixtral:instruct")
+
+	if len(os.Args) > 1 && os.Args[1] == "--version" {
+		fmt.Println(versionString)
+		return
+	}
 
 	oc.Verbose = len(os.Args) > 1 && os.Args[1] == "-v"
 
