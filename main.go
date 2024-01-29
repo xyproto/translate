@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strings"
 
@@ -11,18 +11,15 @@ import (
 	"github.com/xyproto/ollamaclient"
 )
 
-const versionString = "translate 1.0.0"
+const versionString = "translate 1.0.1"
 
 func main() {
 
 	stdinText := "hello"
 	if files.DataReadyOnStdin() {
-		scanner := bufio.NewScanner(os.Stdin)
-		if scanner.Scan() {
-			input := scanner.Text()
-			if input != "" {
-				stdinText = input
-			}
+		data, err := io.ReadAll(os.Stdin)
+		if err == nil { // success
+			stdinText = string(data)
 		}
 	}
 
