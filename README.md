@@ -10,6 +10,12 @@ The translation takes a cuple of seconds, and is not terribly exact, but it is a
 
 `ollama` and `translate` does not require an internet connection once `mixtral:instruct` has been downloaded.
 
+## Quick installation
+
+For installing the latest version of `translate` into `~/go/bin`:
+
+    go install github.com/xyproto/translate@latest
+
 ## Example use
 
 `LANG` is set to `nb_NO.UTF-8`
