@@ -6,7 +6,9 @@ Transate text from `stdin` to the current locale using `ollama` and `mixtral:ins
 
 Requires `ollama` to be set up and serving on port `11434`.
 
-The translation takes a cuple of seconds, and is not terribly exact, but it does not need an internet connection once the model has been downloaded, and is a pretty versatile tool.
+The translation takes a cuple of seconds, and is not terribly exact, but it is a pretty versatile tool.
+
+`ollama` and `translate` does not require an internet connection once `mixtral:instruct` has been downloaded.
 
 ## Example use
 
