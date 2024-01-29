@@ -19,6 +19,13 @@ $ echo 'I can speak Norwegian!' | ./translate
 Jeg kan snakke norsk!
 ```
 
+Translate "hello" to the current locale if no text is given on `stdin`:
+
+```
+$ ./translate
+hei
+```
+
 `LANG` is explicitly set to `de_DE`:
 
 ```
