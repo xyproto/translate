@@ -57,7 +57,7 @@ func main() {
 	lines := strings.Split(strings.TrimSpace(output), "\n")
 	lastIndex := len(lines) - 1
 	for i, line := range lines {
-		if i == lastIndex && (strings.Contains(line, locale) || strings.Contains(strings.ReplaceAll(line, "\\", ""), locale) || strings.Contains(line, "translat")) {
+		if (i == 0 || i == lastIndex) && (strings.Contains(line, locale) || strings.Contains(strings.ReplaceAll(line, "\\", ""), locale) || strings.Contains(line, "translat") || (strings.HasPrefix(line, "(") && strings.HasSuffix(line, ")"))) {
 			continue
 		}
 		sb.WriteString(line + "\n")
