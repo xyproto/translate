@@ -11,7 +11,7 @@ import (
 	"github.com/xyproto/ollamaclient"
 )
 
-const versionString = "translate 1.0.1"
+const versionString = "translate 1.1.0"
 
 func main() {
 
