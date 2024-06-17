@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	versionString    = "translate 1.1.2"
+	versionString    = "translate 1.1.3"
 	translationModel = "mixtral:instruct"
 )
 
@@ -82,9 +82,13 @@ func main() {
 	translatedText = strings.TrimSuffix(translatedText, "»")
 	translatedText = strings.TrimSpace(translatedText)
 
-	if translatedText == "" {
-		translatedText = textToBeTranslated
+	if translatedText != "" {
+		fmt.Println(translatedText)
+		return
 	}
 
-	fmt.Printf("%s\n", translatedText)
+	// At this point, the "translation" is just an empty string.
+	// Print the original text and return with exit code 2.
+	fmt.Println(textToBeTranslated)
+	os.Exit(2)
 }
