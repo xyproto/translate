@@ -8,10 +8,13 @@ import (
 
 	"github.com/xyproto/env/v2"
 	"github.com/xyproto/files"
-	"github.com/xyproto/ollamaclient"
+	"github.com/xyproto/ollamaclient/v2"
 )
 
-const versionString = "translate 1.1.0"
+const (
+	versionString    = "translate 1.1.1"
+	translationModel = "mixtral:instruct"
+)
 
 func main() {
 
@@ -21,16 +24,28 @@ func main() {
 		if err == nil { // success
 			stdinText = string(data)
 		}
+	} else if len(os.Args) > 1 {
+		var xs []string
+		for _, arg := range os.Args {
+			if !strings.HasPrefix(arg, "-") {
+				xs = append(xs, strings.TrimSpace(arg))
+			}
+		}
+		if len(xs) > 0 {
+			stdinText = strings.Join(xs, " ")
+			stdinText = strings.TrimPrefix(stdinText, "\"")
+			stdinText = strings.TrimSuffix(stdinText, "\"")
+		}
 	}
 
 	// Extract the base language from the LANG environment variable
 	locale := env.Str("LANG", "en_US")
 
 	// Construct the prompt with the language's display name and input from STDIN
-	//prompt := "Translate the following text to the locale \"" + locale + "\" (and only output the translated text): " + stdinText
-	prompt := "Translate the following text to the locale " + locale + " (and only output the translated text): " + stdinText
+	prompt := fmt.Sprintf("Translate the following text to the locale %s. Only output the translated text and nothing else. Add no commentary! Add no explanations! Only generate the translation, and nothing else. Here is the full text that needs to be translated: %s", locale, stdinText)
 
-	oc := ollamaclient.NewWithModel("mixtral:instruct")
+	oc := ollamaclient.New()
+	oc.ModelName = translationModel
 
 	if len(os.Args) > 1 && os.Args[1] == "--version" {
 		fmt.Println(versionString)
@@ -63,6 +78,9 @@ func main() {
 		sb.WriteString(line + "\n")
 	}
 	translatedText := strings.TrimSpace(sb.String())
+	translatedText = strings.TrimPrefix(translatedText, "«")
+	translatedText = strings.TrimSuffix(translatedText, "»")
+	translatedText = strings.TrimSpace(translatedText)
 
 	fmt.Printf("%s\n", translatedText)
 }
