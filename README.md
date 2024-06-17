@@ -55,5 +55,5 @@ Ich kann Deutsch sprechen!
 
 ## General info
 
-* Version: 1.1.0
+* Version: 1.1.2
 * License: BSD-3

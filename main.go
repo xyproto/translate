@@ -12,17 +12,17 @@ import (
 )
 
 const (
-	versionString    = "translate 1.1.1"
+	versionString    = "translate 1.1.2"
 	translationModel = "mixtral:instruct"
 )
 
 func main() {
 
-	stdinText := "hello"
+	textToBeTranslated := "hello"
 	if files.DataReadyOnStdin() {
 		data, err := io.ReadAll(os.Stdin)
 		if err == nil { // success
-			stdinText = string(data)
+			textToBeTranslated = string(data)
 		}
 	} else if len(os.Args) > 1 {
 		var xs []string
@@ -32,9 +32,9 @@ func main() {
 			}
 		}
 		if len(xs) > 0 {
-			stdinText = strings.Join(xs, " ")
-			stdinText = strings.TrimPrefix(stdinText, "\"")
-			stdinText = strings.TrimSuffix(stdinText, "\"")
+			textToBeTranslated = strings.Join(xs, " ")
+			textToBeTranslated = strings.TrimPrefix(textToBeTranslated, "\"")
+			textToBeTranslated = strings.TrimSuffix(textToBeTranslated, "\"")
 		}
 	}
 
@@ -42,7 +42,7 @@ func main() {
 	locale := env.Str("LANG", "en_US")
 
 	// Construct the prompt with the language's display name and input from STDIN
-	prompt := fmt.Sprintf("Translate the following text to the locale %s. Only output the translated text and nothing else. Add no commentary! Add no explanations! Only generate the translation, and nothing else. Here is the full text that needs to be translated: %s", locale, stdinText)
+	prompt := fmt.Sprintf("Translate the following text to the locale %s. Only output the translated text and nothing else. Add no commentary! Add no explanations! Only generate the translation, and nothing else. Translate the following text to %s now: %s", locale, textToBeTranslated, locale)
 
 	oc := ollamaclient.New()
 	oc.ModelName = translationModel
@@ -81,6 +81,10 @@ func main() {
 	translatedText = strings.TrimPrefix(translatedText, "«")
 	translatedText = strings.TrimSuffix(translatedText, "»")
 	translatedText = strings.TrimSpace(translatedText)
+
+	if translatedText == "" {
+		translatedText = textToBeTranslated
+	}
 
 	fmt.Printf("%s\n", translatedText)
 }
