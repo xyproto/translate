@@ -1,3 +1,6 @@
+# github.com/dustin/go-humanize v1.0.1
+## explicit; go 1.16
+github.com/dustin/go-humanize
 # github.com/xyproto/binary v1.3.3
 ## explicit; go 1.18
 github.com/xyproto/binary
@@ -7,6 +10,6 @@ github.com/xyproto/env/v2
 # github.com/xyproto/files v1.4.2
 ## explicit; go 1.19
 github.com/xyproto/files
-# github.com/xyproto/ollamaclient v1.5.0
+# github.com/xyproto/ollamaclient v1.9.3
 ## explicit; go 1.21.3
 github.com/xyproto/ollamaclient
