@@ -4,9 +4,9 @@ github.com/dustin/go-humanize v1.0.1 h1:GzkhY7T5VNhEkwH0PVJgjz+fX1rhBrR7pRT3mDkp
 github.com/dustin/go-humanize v1.0.1/go.mod h1:Mu1zIs6XwVuF/gI1OepvI0qD18qycQx+mFykh5fBlto=
 github.com/xyproto/binary v1.3.3 h1:pc33rqTXguiedvsH5nhx4P1Ph7iHb7awqhDscTOTHv4=
 github.com/xyproto/binary v1.3.3/go.mod h1:0bRi3JImoPWOFfM7yPYzNVyLZXYGQTBwdNRPs4m3+qQ=
-github.com/xyproto/env/v2 v2.2.5 h1:FNrp56sptc7ebC2QpM8lqKSGEb3UoYUJZZFl4bmcrPs=
-github.com/xyproto/env/v2 v2.2.5/go.mod h1:F81ZEzu15s3TWUZJ1uzBl9iNeq9zcfHvxMkQJaLZUl0=
+github.com/xyproto/env/v2 v2.3.0 h1:9g1EOZYpccH1L2SeCXEvibyis/gPT+8+t34WqGMSBXQ=
+github.com/xyproto/env/v2 v2.3.0/go.mod h1:F81ZEzu15s3TWUZJ1uzBl9iNeq9zcfHvxMkQJaLZUl0=
 github.com/xyproto/files v1.4.2 h1:DpZbogck63U6fpjBlD91H/3n+Er90FppBUbCwo2bJMk=
 github.com/xyproto/files v1.4.2/go.mod h1:ev4YWddHsJYYyOmc+LL8wvfYMMWA3w7U+VDnpReALGs=
-github.com/xyproto/ollamaclient/v2 v2.3.3 h1:hOF+WcymbOZy4rY4XHb/FumX/yKddsq6eUMkCn6qWSQ=
-github.com/xyproto/ollamaclient/v2 v2.3.3/go.mod h1:WGFVADiCf/UXH/Fajx2yVUcyi6sDOU2Exzf8aqG3jio=
+github.com/xyproto/ollamaclient/v2 v2.5.0 h1:m4VKQLOdKmY/FNfo+EkNGEjUaAWxjWNUhXz1fgHvoz0=
+github.com/xyproto/ollamaclient/v2 v2.5.0/go.mod h1:WGFVADiCf/UXH/Fajx2yVUcyi6sDOU2Exzf8aqG3jio=
