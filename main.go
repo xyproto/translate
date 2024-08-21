@@ -38,6 +38,8 @@ func main() {
 			textToBeTranslated = strings.TrimPrefix(textToBeTranslated, "\"")
 			textToBeTranslated = strings.TrimSuffix(textToBeTranslated, "\"")
 		}
+	} else {
+		showProgressBar = true
 	}
 
 	// Extract the base language from the LANG environment variable
