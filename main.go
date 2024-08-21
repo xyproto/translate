@@ -17,8 +17,10 @@ const (
 )
 
 func main() {
-
-	textToBeTranslated := "hello"
+	var (
+		showProgressBar    bool
+		textToBeTranslated = "hello"
+	)
 	if files.DataReadyOnStdin() {
 		data, err := io.ReadAll(os.Stdin)
 		if err == nil { // success
@@ -58,7 +60,7 @@ func main() {
 		fmt.Println("Prompt: " + prompt)
 	}
 
-	if err := oc.PullIfNeeded(); err != nil {
+	if err := oc.PullIfNeeded(showProgressBar); err != nil {
 		fmt.Fprintln(os.Stderr, "Error:", err)
 		os.Exit(1)
 	}
